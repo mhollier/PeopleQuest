@@ -1,0 +1,56 @@
+﻿<!-- Use an IPagedList collection to support paging via the PagedList.Mvc extension -->
+@model PagedList.IPagedList<PeopleQuest.Models.PersonSummaryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/PagedList.css")
+
+<h2>Index</h2>
+
+<!-- Link for adding a new person -->
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- Search form -->
+<!-- The 'peoplequest-results-target' attribute provides the link to the div used in client
+JavaScript during AJAX requests. -->
+<form method="get" action="@Url.Action("Index", "People")"
+      class="form-horizontal" peoplequest-enable-ajax="true">
+    <div class="form-group">
+        <!-- Search by name user input control -->
+        <label class="sr-only" for="searchInput">Search by first or last name</label>
+        <input id="searchInput" type="search" name="searchTerm" class="form-control col-sm-4"
+               placeholder="Search by first or last name"
+               value="@ViewBag.CurrentFilter" autocomplete="off"/>
+
+        <!-- Search button to submit query -->
+        <span class="input-group-btn col-sm-1" style="padding-left: 5px">
+            <button id="searchButton" class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search text-muted"></span>
+            </button>
+        </span>
+    </div>
+</form>
+
+<!-- People list view rendered from a partial view -->
+@Html.Partial("_PeopleList", Model)
+
+<!-- Loading indicator -->
+<div class="modal popup" id="loadingIndicator" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Loading...</h4>
+            </div>
+            <div class="progress">
+                <!-- Bootstrap progress bar centered on screen -->
+                <div class="progress-bar progress-bar-striped active" role="progressbar"
+                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

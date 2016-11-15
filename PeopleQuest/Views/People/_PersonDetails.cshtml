@@ -1,0 +1,56 @@
+﻿@model PeopleQuest.Models.Person
+<div>
+    <!-- Name -->
+<h4>@Model.FullName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <!-- Birth Date -->
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <!-- Address1 -->
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <!-- Address2 -->
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <!-- Interests -->
+        <dt>
+            @Html.DisplayNameFor(model => model.Interests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interests)
+        </dd>
+
+        <!-- Image -->
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img class="img-rounded" height="250"
+                 src="@Url.Action("GetPicture", "People", new {id = Model.Id})"
+                 alt="@Model.FullName"
+                 title="@Model.FullName" />
+        </dd>
+
+    </dl>
+</div>
