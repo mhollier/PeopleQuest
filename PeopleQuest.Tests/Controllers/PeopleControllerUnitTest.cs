@@ -60,8 +60,8 @@ namespace PeopleQuest.Tests.Controllers
             var result = controller.Index();
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(ViewResult));
+            Assert.IsNotNull(result.Result);
+            Assert.IsInstanceOfType(result.Result, typeof(ViewResult));
         }
 
         [TestMethod]
@@ -124,7 +124,7 @@ namespace PeopleQuest.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(HttpStatusCodeResult));
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
         [TestMethod]

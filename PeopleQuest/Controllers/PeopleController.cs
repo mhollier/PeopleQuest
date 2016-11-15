@@ -9,6 +9,7 @@ using PeopleQuest.Models;
 
 namespace PeopleQuest.Controllers
 {
+    [Authorize]
     public class PeopleController : Controller
     {
         private readonly PeopleQuestContext ctx;
@@ -24,6 +25,7 @@ namespace PeopleQuest.Controllers
         }
 
         // GET: People
+        [AllowAnonymous]
         public async Task<ActionResult> Index(string currentFilter = null, string searchTerm = null, int page = 1)
         {
             await Task.Delay(500);
@@ -60,6 +62,7 @@ namespace PeopleQuest.Controllers
         /// </summary>
         /// <param name="id">The unique person identifier.</param>
         /// <returns></returns>
+        [AllowAnonymous]
         public FileContentResult GetPicture(int id)
         {
             var image = ctx.Persons.Find(id).Image;
@@ -74,6 +77,7 @@ namespace PeopleQuest.Controllers
         }
 
         // GET: People/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

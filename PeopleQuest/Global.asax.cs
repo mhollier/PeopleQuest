@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using PeopleQuest.Migrations;
 
 namespace PeopleQuest
 {
@@ -11,7 +10,7 @@ namespace PeopleQuest
         protected void Application_Start()
         {
             // Apply migrations to the PeopleQuest database.
-            var migrator = new DbMigrator(new Configuration());
+            var migrator = new DbMigrator(new PeopleQuest.Migrations.Configuration());
             migrator.Update();
 
             AreaRegistration.RegisterAllAreas();
